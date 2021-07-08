@@ -18,6 +18,7 @@ const full_timehr=8
 const part_timehr=4
 const emp_perhr=20
 const numof_workingdays=20
+const maxhrs_inmnth=160
 {
     let emphr=0
     let check=Math.floor(Math.random() * 10) %3
@@ -49,11 +50,20 @@ let check=Math.floor(Math.random() * 10) %3
 let emphr=getEmphr(check)
 let empwage=emphr*emp_perhr
 console.log("get emp hour"+emphr+" "+"emp wage"+empwage)
+////calculating total wage as nu, of days given
 let totalemphrs=0
 for(let day=0;day<numof_workingdays;day++){
 totalemphrs += getEmphr(check)
 }
 let totalwage = totalemphrs*emp_perhr
 console.log("totalhrs="+totalemphrs + "TOTAL WAGE"+totalwage)
-
+////condition with max hrs we calculating total wage
+totalhrs=0
+totaldays=0
+while(totalhrs <= maxhrs_inmnth && totaldays < numof_workingdays){
+    totaldays++
+    totalhrs += getEmphr(check)
+}
+let total_wage=totalhrs*emp_perhr
+console.log("hrs="+totalhrs+" "+"days="+totaldays+" "+"wage="+total_wage)
 
