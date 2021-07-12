@@ -1,40 +1,15 @@
-///UC-1 Check for present or absent
-{
-    const is_Absent = 0
-    let check = Math.floor(Math.random() * 10) % 2
-    if(check == is_Absent)
-    {
-    console.log("Employee is absent")
-    }
-    else
-    {
-    console.log("Employee is present")
-    }
-}
-///Calculating Empwage
+
 const is_fulltime=1
 const is_parttime=2
 const full_timehr=8
 const part_timehr=4
-const emp_perhr=20
+const wage_perhr=20
 const numof_workingdays=20
 const maxhrs_inmnth=160
-{
-    let emphr=0
-    let check=Math.floor(Math.random() * 10) %3
-    switch(check){
-        case is_fulltime:
-            emphr=full_timehr;
-            break;
-            case is_parttime:
-                emphr=part_timehr;
-                break;
-                default:
-                    emphr=0;
-    }
-    let empwage=emphr*emp_perhr;
-    console.log("the empwage is:"+empwage)
-}
+let totaldays=0
+let totalhrs=0
+let empwagearr=new Array();
+let check = Math.floor(Math.random() * 10)%3;
 function getEmphr(check)
 {
     switch(check){
@@ -46,24 +21,18 @@ function getEmphr(check)
                     return 0;
     }
 }
-let check=Math.floor(Math.random() * 10) %3
-let emphr=getEmphr(check)
-let empwage=emphr*emp_perhr
-console.log("get emp hour"+emphr+" "+"emp wage"+empwage)
-////calculating total wage as nu, of days given
-let totalemphrs=0
-for(let day=0;day<numof_workingdays;day++){
-totalemphrs += getEmphr(check)
+function CalculateWage (emphr){
+    emphr*wage_perhr
 }
-let totalwage = totalemphrs*emp_perhr
-console.log("totalhrs="+totalemphrs + "TOTAL WAGE"+totalwage)
-////condition with max hrs we calculating total wage
-totalhrs=0
-totaldays=0
 while(totalhrs <= maxhrs_inmnth && totaldays < numof_workingdays){
     totaldays++
-    totalhrs += getEmphr(check)
+let emphr=getEmphr(check)
+totalhrs += getEmphr(check)
+empwagearr.push(CalculateWage(emphr))
 }
-let total_wage=totalhrs*emp_perhr
-console.log("hrs="+totalhrs+" "+"days="+totaldays+" "+"wage="+total_wage)
+let empwage =CalculateWage(totalhrs);
+console.log("Days:"+totaldays+" "+"hrs:"+totalhrs+" "+"wage:"+empwage)
+
+
+
 
